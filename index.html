@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Interpolasi — Kelompok 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Metode Numerik · Kelompok 5</div>
+    <h1>Kalkulator Interpolasi Polinomial</h1>
+    <div class="sub">Menaksir nilai Y di antara titik data menggunakan Interpolasi Linear, Kuadratik, atau Kubik — dihitung lewat Matriks Vandermonde &amp; Eliminasi Gauss.</div>
+  </header>
+
+  <div class="grid-main">
+
+    <!-- PANEL KIRI: INPUT -->
+    <section class="panel" id="panel-input">
+      <div class="panel-head">
+        <div class="panel-title">Area Masukan</div>
+        <div class="panel-tag">PANEL KIRI</div>
+      </div>
+
+      <div class="tabs" id="tabs">
+        <div class="tab active" data-method="linear">Linear</div>
+        <div class="tab" data-method="kuadratik">Kuadratik</div>
+        <div class="tab" data-method="kubik">Kubik</div>
+      </div>
+
+      <div class="coord-list" id="coord-list"></div>
+
+      <div class="target-box">
+        <div class="field">
+          <label>NILAI X YANG DICARI (TARGET)</label>
+          <input type="number" id="target-x" step="any" placeholder="contoh: 4">
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" id="btn-hitung">Hitung Prediksi Sekarang</button>
+      </div>
+      <div class="btn-row" style="margin-top:10px;">
+        <button class="btn-ghost" id="btn-contoh" style="flex:1;">Isi Data Contoh</button>
+      </div>
+      <div class="error-msg" id="error-msg"></div>
+    </section>
+
+    <!-- PANEL KANAN: HASIL -->
+    <section class="panel" id="panel-result">
+      <div class="panel-head">
+        <div class="panel-title">Area Hasil</div>
+        <div class="panel-tag">PANEL KANAN</div>
+      </div>
+
+      <div class="result-display">
+        <div class="result-label">Hasil Estimasi Y</div>
+        <div class="result-value empty" id="result-value">—</div>
+      </div>
+
+      <div class="equation-box">
+        <div class="result-label">Persamaan Polinomial</div>
+        <div class="equation-text empty" id="equation-text">Belum ada perhitungan</div>
+      </div>
+
+      <div class="meta-row">
+        <span>Metode: <span class="hl" id="meta-method">Linear</span></span>
+        <span>Derajat: <span class="hl" id="meta-degree">1</span></span>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-ghost" id="btn-copy" style="flex:1;">Salin Angka</button>
+        <button class="btn-ghost" id="btn-clear" style="flex:1;">Hapus Semua</button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- PANEL BAWAH: GRAFIK -->
+  <section class="panel graph-panel">
+    <div class="panel-head">
+      <div class="panel-title">Visualisasi Grafik</div>
+      <div class="legend">
+        <span><span class="dot data"></span>Titik Data</span>
+        <span><span class="line-sample"></span>Kurva Polinomial</span>
+        <span><span class="dot pred"></span>Titik Prediksi</span>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="chart"></canvas>
+    </div>
+  </section>
+
+  <footer>Kelompok 5 — Interpolasi Lanjar, Kuadratik &amp; Kubik · Universitas Perjuangan Tasikmalaya</footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
